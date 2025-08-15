@@ -15,7 +15,7 @@ const corsOptions = {
   origin: process.env.NODE_ENV === 'production'
     ? [
       process.env.FRONTEND_URL,
-      'https://your-frontend-app.onrender.com'
+      'https://your-frontend-app.onrender.com'  // Update this after frontend deployment
     ]
     : [
       'http://localhost:5173',
