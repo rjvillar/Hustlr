@@ -6,10 +6,17 @@ import { fileURLToPath, URL } from "node:url";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
+    historyApiFallback: true,
     proxy: {
-      "/api": "http://localhost:5000",
-      "/api/auth": "http://localhost:5000",
+      "/api": {
+        target: "http://localhost:5000",
+        changeOrigin: true,
+        secure: false,
+      },
     },
+  },
+  preview: {
+    historyApiFallback: true,
   },
   resolve: {
     alias: {

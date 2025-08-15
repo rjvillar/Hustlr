@@ -11,6 +11,15 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "keywords": [
+    "job",
+    "tracker",
+    "api",
+    "express",
+    "mongodb"
+  ],
+  "author": "RJ Villar",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
     "mongoose": "^7.5.0",

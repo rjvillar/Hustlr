@@ -1,4 +1,10 @@
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ||
+  (import.meta.env.PROD
+    ? 'https://your-backend-app.onrender.com'
+    : 'http://localhost:5000'
+  );
+
+console.log('🌍 API Base URL:', API_BASE_URL);
 
 async function handleResponse(response) {
   const text = await response.text();
@@ -19,11 +25,12 @@ async function handleResponse(response) {
 }
 
 export async function loginUser(email, password) {
-  const response = await fetch(`${API_URL}/auth/login`, {
+  const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: 'include',
     body: JSON.stringify({ email, password }),
   });
 
@@ -31,37 +38,39 @@ export async function loginUser(email, password) {
 }
 
 export async function registerUser(name, email, password) {
-  const response = await fetch(`${API_URL}/auth/register`, {
+  const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: 'include',
     body: JSON.stringify({ name, email, password }),
   });
 
   return handleResponse(response);
 }
 
-// Job functions
 export async function getJobs(token) {
-  const response = await fetch(`${API_URL}/api/jobs`, {
+  const response = await fetch(`${API_BASE_URL}/api/jobs`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`,
     },
+    credentials: 'include',
   });
 
   return handleResponse(response);
 }
 
 export async function createJob(jobData, token) {
-  const response = await fetch(`${API_URL}/api/jobs`, {
+  const response = await fetch(`${API_BASE_URL}/api/jobs`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`,
     },
+    credentials: 'include',
     body: JSON.stringify(jobData),
   });
 
@@ -69,12 +78,13 @@ export async function createJob(jobData, token) {
 }
 
 export async function updateJob(jobId, jobData, token) {
-  const response = await fetch(`${API_URL}/api/jobs/${jobId}`, {
+  const response = await fetch(`${API_BASE_URL}/api/jobs/${jobId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`,
     },
+    credentials: 'include',
     body: JSON.stringify(jobData),
   });
 
@@ -82,23 +92,25 @@ export async function updateJob(jobId, jobData, token) {
 }
 
 export async function deleteJob(jobId, token) {
-  const response = await fetch(`${API_URL}/api/jobs/${jobId}`, {
+  const response = await fetch(`${API_BASE_URL}/api/jobs/${jobId}`, {
     method: "DELETE",
     headers: {
       "Authorization": `Bearer ${token}`,
     },
+    credentials: 'include',
   });
 
   return handleResponse(response);
 }
 
 export async function getStats(token) {
-  const response = await fetch(`${API_URL}/api/stats`, {
+  const response = await fetch(`${API_BASE_URL}/api/stats`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${token}`,
     },
+    credentials: 'include',
   });
 
   return handleResponse(response);
