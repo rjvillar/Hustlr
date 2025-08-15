@@ -1,0 +1,60 @@
+@keyframes subtle-pulse {
+    0% {
+        border-color: rgb(252 165 165);
+    }
+
+    50% {
+        border-color: rgb(239 68 68);
+    }
+
+    100% {
+        border-color: rgb(252 165 165);
+    }
+}
+
+@keyframes subtle-pulse-warn {
+    0% {
+        border-color: rgb(251 146 60);
+    }
+
+    50% {
+        border-color: rgb(234 88 12);
+    }
+
+    100% {
+        border-color: rgb(251 146 60);
+    }
+}
+
+.has-error-required::after,
+.has-error-format::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 0.75rem;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.has-error-required input,
+.has-error-format input {
+    border-color: transparent !important;
+}
+
+.has-error-required::after {
+    border: 1px solid rgb(252 165 165);
+    animation: subtle-pulse 0.75s cubic-bezier(0.22, 1, 0.36, 1) 2;
+}
+
+.has-error-format::after {
+    border: 1px solid rgb(251 146 60);
+    animation: subtle-pulse-warn 0.75s cubic-bezier(0.22, 1, 0.36, 1) 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .has-error-required::after,
+    .has-error-format::after {
+        animation: none !important;
+    }
+}
