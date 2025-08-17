@@ -15,7 +15,7 @@ const corsOptions = {
   origin: process.env.NODE_ENV === 'production'
     ? [
       process.env.FRONTEND_URL,
-      'https://your-frontend-app.onrender.com'
+      'https://hustlr-n41l.onrender.com'
     ]
     : [
       'http://localhost:5173',
