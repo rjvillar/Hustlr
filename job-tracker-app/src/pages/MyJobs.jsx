@@ -1,7 +1,5 @@
 import React, { useRef, useState } from "react";
 import QuickActions from "@/components/QuickActions";
-import { EmojiProvider, Emoji } from "react-apple-emojis";
-import emojiData from "react-apple-emojis/src/data.json";
 import JobItems from "@/components/JobItems";
 
 function MyJobs() {
@@ -28,9 +26,7 @@ function MyJobs() {
       <div className="py-5 text-[#193948]">
         <h1 className="font-black text-2xl px-5 sm:text-3xl">
           Your job list, all here{" "}
-          <EmojiProvider data={emojiData}>
-            <Emoji name="rocket" className="inline-block w-7 ml-1 mb-2" />
-          </EmojiProvider>
+          <span className="inline-block text-2xl ml-1">🚀</span>
         </h1>
         <div className="px-5 pt-3 sm:p-5">
           <QuickActions

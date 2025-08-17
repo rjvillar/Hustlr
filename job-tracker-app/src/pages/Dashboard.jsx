@@ -1,6 +1,4 @@
 import React, { useEffect, useContext, useState } from "react";
-import { EmojiProvider, Emoji } from "react-apple-emojis";
-import emojiData from "react-apple-emojis/src/data.json";
 import AuthContext from "@/context/AuthContext";
 import ApplicationCard from "../components/ApplicationCard";
 import PendingCard from "../components/PendingCard";
@@ -29,13 +27,13 @@ function Dashboard() {
       return {
         primary: `Hello, ${displayName}!`,
         secondary: "This is your dashboard",
-        emoji: "party popper",
+        emoji: "🚀",
       };
     } else {
       return {
         primary: `Hello, ${displayName}!`,
         secondary: "Welcome back",
-        emoji: "waving hand light skin tone",
+        emoji: "👋",
       };
     }
   };
@@ -48,12 +46,7 @@ function Dashboard() {
         <p className="text-xl">{greeting.primary}</p>
         <p className="font-black text-3xl">
           {greeting.secondary}{" "}
-          <EmojiProvider data={emojiData}>
-            <Emoji
-              name={greeting.emoji}
-              className="inline-block w-7 ml-1 mb-2"
-            />
-          </EmojiProvider>
+          <span className="inline-block text-2xl ml-1">{greeting.emoji}</span>
         </p>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 p-5">
