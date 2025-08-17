@@ -1,6 +1,6 @@
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ||
   (import.meta.env.PROD
-    ? 'https://your-backend-app.onrender.com'
+    ? 'https://job-tracker-server-eef0.onrender.com'
     : 'http://localhost:5000'
   );
 

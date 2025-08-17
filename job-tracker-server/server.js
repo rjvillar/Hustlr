@@ -15,7 +15,7 @@ const corsOptions = {
   origin: process.env.NODE_ENV === 'production'
     ? [
       process.env.FRONTEND_URL,
-      'https://hustlr-n41l.onrender.com'
+      'https://hustlr-job-tracker.onrender.com'
     ]
     : [
       'http://localhost:5173',
