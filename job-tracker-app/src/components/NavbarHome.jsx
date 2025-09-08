@@ -134,7 +134,7 @@ function NavbarHome() {
   };
 
   return (
-    <div className="z-40 flex items-center justify-between pt-8 pb-6 px-7 sm:px-10 sm:pt-9 relative bg-[#f7f6fb]">
+    <div className="z-40 flex items-center justify-between pt-7 pb-4 px-7 sm:px-10 sm:pt-9 relative bg-[#f7f6fb]">
       <img className="w-9" src={assets.logo_colored} alt="Logo" />
 
       <div

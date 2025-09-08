@@ -38,20 +38,20 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
 })
   .then(() => {
-    console.log('✅ MongoDB connected successfully');
-    console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
+    console.log('MongoDB connected successfully');
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
   })
   .catch(err => {
-    console.error('❌ MongoDB connection error:', err.message);
+    console.error('MongoDB connection error:', err.message);
     process.exit(1);
   });
 
 mongoose.connection.on('disconnected', () => {
-  console.log('⚠️  MongoDB disconnected');
+  console.log('MongoDB disconnected');
 });
 
 mongoose.connection.on('reconnected', () => {
-  console.log('✅ MongoDB reconnected');
+  console.log('MongoDB reconnected');
 });
 
 app.use('/api/auth', authRoutes);
@@ -85,7 +85,7 @@ app.get('/', (req, res) => {
 });
 
 app.use((err, req, res, next) => {
-  console.error('❌ Server Error:', err.stack);
+  console.error('Server Error:', err.stack);
   res.status(500).json({
     message: 'Something went wrong!',
     error: process.env.NODE_ENV === 'production' ? {} : err.stack
@@ -99,18 +99,18 @@ app.use('*', (req, res) => {
 });
 
 process.on('SIGTERM', async () => {
-  console.log('🛑 SIGTERM received, shutting down gracefully');
+  console.log('SIGTERM received, shutting down gracefully');
   await mongoose.connection.close();
   process.exit(0);
 });
 
 process.on('SIGINT', async () => {
-  console.log('🛑 SIGINT received, shutting down gracefully');
+  console.log('SIGINT received, shutting down gracefully');
   await mongoose.connection.close();
   process.exit(0);
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server is running on port ${PORT}`);
-  console.log(`📍 Health check: http://localhost:${PORT}/api/health`);
+  console.log(`Server is running on port ${PORT}`);
+  console.log(`Health check: http://localhost:${PORT}/api/health`);
 });
